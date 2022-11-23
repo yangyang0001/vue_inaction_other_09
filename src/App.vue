@@ -1,8 +1,11 @@
 <template>
     <div class="app-container">
-        <Header :title="title"></Header>
+        <Header :title="title">
+            <!-- 这里使用一下槽, 其实没有必要这样使用! -->
+            <div class="header-container">{{ title }}</div>
+        </Header>
         <Goods v-for="goods in list" :key="goods.id" :goods="goods" @change_checked="change_checked">
-            <!-- 默认槽的使用 -->
+            <!-- TODO: 默认槽的使用 -->
             <Counter :goods="goods" @num_change="num_change(goods, $event)"></Counter>
         </Goods>
         <Footer :list="list" @all_checked="all_checked"></Footer>
